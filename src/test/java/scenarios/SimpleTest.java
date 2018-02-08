@@ -12,17 +12,20 @@ public class SimpleTest extends DriverSetup {
         prepareAndroidNative();
     }
 
+    /**
+     * uses for checking the access to the button by the different types of locators
+     */
     @Test
     public void checkButton() {
+        String appPackageName = "com.example.android.contactmanager:id/";
 
         driver.findElement(By.xpath("//android.widget.Button[@content-desc='Add Contact']")).click();
 
         driver.resetApp();
         driver.findElementByAccessibilityId("Add Contact").click();
 
-//        driver.resetApp();
-//        String appPackageName = "com.example.android.contactmanager:id/";
-//        driver.findElementById(appPackageName + "addContactButton").click();
+        driver.resetApp();
+        driver.findElementById(appPackageName + "addContactButton").click();
 
         System.out.println("Test status - 200 OK!");
     }

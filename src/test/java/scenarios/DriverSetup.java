@@ -10,11 +10,21 @@ import java.net.URL;
 public class DriverSetup {
     protected AndroidDriver driver;
 
-    public void prepareAndroidNative(){
+    /**
+     * uses for preparing driver and to set the general settings.
+     */
+    public void prepareAndroidNative() {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("deviceName", "0019b3ef0cfd5e");
-//        desiredCapabilities.setCapability("newCommandTimeout" , 100);
+
+        //// Samsung GT-I9100 (Android 4.1.2)
+        //      desiredCapabilities.setCapability("deviceName", "0019b3ef0cfd5e");
+
+        //// Samsung GT-N7100 (Android 4.4.4)
+        //      desiredCapabilities.setCapability("deviceName", "4df1123b5cac8f87");
+
+        //Samsung SM-N9005 (Android 6.0)
+        desiredCapabilities.setCapability("deviceName", "3394b869");
 
         File appDir = new File("src/main/resources");
         File app = new File(appDir, "contactmanager.apk");
