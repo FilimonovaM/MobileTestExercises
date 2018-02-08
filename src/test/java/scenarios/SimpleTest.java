@@ -14,17 +14,17 @@ public class SimpleTest extends DriverSetup {
 
     @Test
     public void checkButton() {
-        String appPackageName = "com.example.android.contactmanager:id/";
 
         driver.findElement(By.xpath("//android.widget.Button[@content-desc='Add Contact']")).click();
 
         driver.resetApp();
         driver.findElementByAccessibilityId("Add Contact").click();
 
-        driver.resetApp();
-        driver.findElement(By.id(appPackageName + "addContactButton")).click();
+//        driver.resetApp();
+//        String appPackageName = "com.example.android.contactmanager:id/";
+//        driver.findElementById(appPackageName + "addContactButton").click();
 
-        System.out.println("Test status - 200OK!");
+        System.out.println("Test status - 200 OK!");
     }
 
     @AfterClass

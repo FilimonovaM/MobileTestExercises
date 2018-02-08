@@ -13,7 +13,7 @@ public class DriverSetup {
     public void prepareAndroidNative(){
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("deviceName", "emulator-5554");
+        desiredCapabilities.setCapability("deviceName", "0019b3ef0cfd5e");
 //        desiredCapabilities.setCapability("newCommandTimeout" , 100);
 
         File appDir = new File("src/main/resources");
