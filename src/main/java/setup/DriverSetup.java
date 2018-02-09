@@ -1,20 +1,25 @@
-package scenarios;
+package setup;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class DriverSetup {
-    protected AndroidDriver driver;
+    protected DesiredCapabilities desiredCapabilities;
+    protected WebDriverWait webDriverWait;
+    protected AppiumDriver driver;
+
 
     /**
      * uses for preparing driver and to set the general settings.
      */
     public void prepareAndroidNative() {
-        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+        desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
 
         //// Samsung GT-I9100 (Android 4.1.2)

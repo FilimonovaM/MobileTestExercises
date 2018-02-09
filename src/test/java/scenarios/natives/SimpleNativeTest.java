@@ -1,11 +1,12 @@
-package scenarios;
+package scenarios.natives;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import setup.DriverSetup;
 
-public class SimpleTest extends DriverSetup {
+public class SimpleNativeTest extends DriverSetup {
 
     @BeforeClass
     public void setup() {
@@ -15,7 +16,7 @@ public class SimpleTest extends DriverSetup {
     /**
      * uses for checking the access to the button by the different types of locators
      */
-    @Test
+    @Test(description = "some description")
     public void checkButton() {
         String appPackageName = "com.example.android.contactmanager:id/";
 
