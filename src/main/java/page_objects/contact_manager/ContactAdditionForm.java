@@ -11,7 +11,7 @@ public class ContactAdditionForm {
 
     public void checkTheButton(AppiumDriver driver){
         additionContactButton = driver.findElement(By.xpath("//android.widget.Button[@content-desc='Add Contact']"));
+        assert additionContactButton.isDisplayed() : "Button 'Add Contact' is not Displayed";
         additionContactButton.click();
-        Assert.assertTrue(additionContactButton.isDisplayed());
     }
 }

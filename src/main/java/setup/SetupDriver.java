@@ -7,6 +7,7 @@ import utile.ReadProperties;
 import java.io.File;
 import java.util.Properties;
 
+//TODO: driver
 public class SetupDriver {
     protected WebDriverWait webDriverWait;
     protected DesiredCapabilities capabilities;
@@ -22,7 +23,7 @@ public class SetupDriver {
                 url = "http://" + properties.getProperty("sut");
                 if (properties.getProperty("platformName").equalsIgnoreCase("Android")) {
                     properties.setProperty("browserName", "Chrome");
-                } else if (properties.getProperty("platformName").equalsIgnoreCase("Ios")) {
+                } else if (properties.getProperty("platformName").equalsIgnoreCase("iOS")) {
                     properties.setProperty("browser", "Safari");
                 } else {
                     throw new Exception("Unknown platform");
@@ -31,7 +32,7 @@ public class SetupDriver {
                 properties.setProperty("app", new File(properties.getProperty("app")).getAbsolutePath());
             }
             properties.forEach((key, value) -> {
-                if (!key.toString().equalsIgnoreCase("sut") && !key.toString().equalsIgnoreCase("sut")) {
+                if (!key.toString().equalsIgnoreCase("sut")) {
                     capabilities.setCapability((String) key, (String) value);
                 }
             });
