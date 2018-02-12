@@ -1,4 +1,4 @@
-package page_objects;
+package page_objects.contact_manager;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.SelendroidFindBy;

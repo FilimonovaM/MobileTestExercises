@@ -4,8 +4,8 @@ import io.appium.java_client.android.AndroidDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import page_objects.ContactInfoForm;
-import page_objects.ContactAdditionForm;
+import page_objects.contact_manager.ContactInfoForm;
+import page_objects.contact_manager.ContactAdditionForm;
 import setup.SetupDriver;
 
 import java.net.MalformedURLException;

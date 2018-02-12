@@ -1,4 +1,4 @@
-package page_objects;
+package page_objects.contact_manager;
 
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
