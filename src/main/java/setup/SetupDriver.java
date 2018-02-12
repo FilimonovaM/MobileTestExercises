@@ -9,6 +9,7 @@ import java.util.Properties;
 public class SetupDriver {
     protected WebDriverWait wait;
     protected DesiredCapabilities capabilities;
+    protected String url;
     private Properties properties;
 
     protected DesiredCapabilities prepareDriver(String propertyFile) throws Exception {
@@ -16,15 +17,20 @@ public class SetupDriver {
         capabilities = new DesiredCapabilities();
         if (properties != null) {
             if (properties.containsKey("sut")) {
-                if (properties.getProperty("paltformName").equalsIgnoreCase("Android")) {
-                    properties.setProperty("browser", "Chrome");
-                } else if (properties.getProperty("paltformName").equalsIgnoreCase("Ios")) {
+                url = "http://"+properties.getProperty("sut");
+                if (properties.getProperty("platformName").equalsIgnoreCase("Android")) {
+                    properties.setProperty("browserName", "Chrome");
+                } else if (properties.getProperty("platformName").equalsIgnoreCase("Ios")) {
                     properties.setProperty("browser", "Safari");
                 } else {
                     throw new Exception("Unknown platform");
                 }
             }
-            properties.forEach((key, value) -> capabilities.setCapability((String) key, (String) value));
+            properties.forEach((key, value) -> {
+                if(!key.toString().equalsIgnoreCase("sut")){
+                    capabilities.setCapability((String) key, (String) value);
+                }
+            });
         }
         return capabilities;
     }

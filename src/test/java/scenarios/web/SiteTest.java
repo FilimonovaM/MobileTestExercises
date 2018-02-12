@@ -1,8 +1,11 @@
 package scenarios.web;
 
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 import setup.SetupDriver;
 
 import java.net.MalformedURLException;
@@ -21,6 +24,12 @@ public class SiteTest extends SetupDriver{
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Test(description = "some description")
+    public void checkURL() {
+        driver.get(url);
+        Assert.assertEquals(driver.getTitle(), "Internet Assigned Numbers Authority");
     }
 
     @AfterClass
