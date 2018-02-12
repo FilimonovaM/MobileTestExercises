@@ -1,7 +1,6 @@
 package scenarios.natives;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -20,12 +19,15 @@ public class ContactManagerTest extends SetupDriver {
     ContactInfoForm contactInfoForm;
     AppiumDriver driver;
 
+    /**
+     * uses to prepare AppiumDriver
+     */
     @BeforeClass
     public void setup() {
         contactAdditionForm = new ContactAdditionForm();
         contactInfoForm = new ContactInfoForm();
         try {
-            driver = new AppiumDriver(new URL(APPIUM_LOCALHOST.text), prepareDriver(NATIVES_PROPERTY.text));
+            driver = new AppiumDriver(new URL(APPIUM_LOCALHOST.text), prepareDriverSettings(NATIVES_PROPERTY.text));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -38,9 +40,11 @@ public class ContactManagerTest extends SetupDriver {
         driver.quit();
     }
 
-    @Test
+    /**
+     * uses for checking some functional of ContactManager
+     */
+    @Test(description = "Native test of some functional of ContactManager")
     public void checkContactManager() {
-
         contactAdditionForm.checkTheButton(driver);
 
         contactInfoForm.checkContactNameForm(driver);

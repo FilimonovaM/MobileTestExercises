@@ -13,7 +13,7 @@ public class SetupDriver {
     protected String url;
     private Properties properties;
 
-    protected DesiredCapabilities prepareDriver(String propertyFile) throws Exception {
+    protected DesiredCapabilities prepareDriverSettings(String propertyFile) throws Exception {
         properties = ReadProperties.getCurrentProp(propertyFile);
         capabilities = new DesiredCapabilities();
 

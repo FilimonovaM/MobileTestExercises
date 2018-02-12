@@ -1,7 +1,6 @@
 package scenarios.web;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -18,10 +17,13 @@ import static enums.TestsSettingsEnum.WEB_PROPERTY;
 public class SiteTest extends SetupDriver{
     AppiumDriver driver;
 
+    /**
+     * uses to prepare AppiumDriver
+     */
     @BeforeClass
     public void setup(){
         try {
-            driver = new AppiumDriver(new URL(APPIUM_LOCALHOST.text), prepareDriver(WEB_PROPERTY.text));
+            driver = new AppiumDriver(new URL(APPIUM_LOCALHOST.text), prepareDriverSettings(WEB_PROPERTY.text));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -29,7 +31,10 @@ public class SiteTest extends SetupDriver{
         }
     }
 
-    @Test(description = "some description")
+    /**
+     * uses for checking some functional on web site "https://www.iana.org".
+     */
+    @Test(description = "testing of web site")
     public void checkURL() {
         driver.get(url);
         Assert.assertEquals(driver.getTitle(), TITLE.text);
