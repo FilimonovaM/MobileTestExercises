@@ -34,7 +34,7 @@ public class SiteTest extends SetupDriver{
     /**
      * uses for checking some functional on web site "https://www.iana.org".
      */
-    @Test(description = "testing of web site")
+    @Test(description = "testing of web site", groups = "web")
     public void checkURL() {
         driver.get(url);
         Assert.assertEquals(driver.getTitle(), TITLE.text);

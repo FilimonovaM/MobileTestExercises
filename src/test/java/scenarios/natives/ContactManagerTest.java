@@ -43,7 +43,7 @@ public class ContactManagerTest extends SetupDriver {
     /**
      * uses for checking some functional of ContactManager
      */
-    @Test(description = "Native test of some functional of ContactManager")
+    @Test(description = "Native test of some functional of ContactManager", groups = "native")
     public void checkContactManager() {
         contactAdditionForm.checkTheButton(driver);
 
