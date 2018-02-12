@@ -4,6 +4,9 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.io.File;
 import java.net.MalformedURLException;
@@ -18,27 +21,30 @@ public class DriverSetup {
     /**
      * uses for preparing driver and to set the general settings.
      */
+    @BeforeMethod
     public void prepareAndroidNative() {
-        desiredCapabilities = new DesiredCapabilities();
-        desiredCapabilities.setCapability("platformName", "Android");
+//        desiredCapabilities = new DesiredCapabilities();
+//        desiredCapabilities.setCapability("platformName", "Android");
 
         //// Samsung GT-I9100 (Android 4.1.2)
         //      desiredCapabilities.setCapability("deviceName", "0019b3ef0cfd5e");
-
         //// Samsung GT-N7100 (Android 4.4.4)
         //      desiredCapabilities.setCapability("deviceName", "4df1123b5cac8f87");
+        ////Samsung SM-N9005 (Android 6.0)
+        //desiredCapabilities.setCapability("deviceName", "3394b869");
 
-        //Samsung SM-N9005 (Android 6.0)
-        desiredCapabilities.setCapability("deviceName", "3394b869");
+//        File appDir = new File("src/main/resources");
+//        File app = new File(appDir, "contactmanager.apk");
+//        desiredCapabilities.setCapability("app", app.getAbsolutePath());
+//        try {
+//            driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), desiredCapabilities);
+//        } catch (MalformedURLException e) {
+//            e.printStackTrace();
+//        }
+    }
 
-        File appDir = new File("src/main/resources");
-        File app = new File(appDir, "contactmanager.apk");
-        desiredCapabilities.setCapability("app", app.getAbsolutePath());
-
-        try {
-            driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), desiredCapabilities);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+    @AfterMethod
+    public void tearDown(){
+        driver.quit();
     }
 }

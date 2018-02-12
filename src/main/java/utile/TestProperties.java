@@ -1,4 +1,4 @@
-package setup;
+package utile;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,7 +9,7 @@ public class TestProperties {
 
     Properties getCurrentProp() throws IOException {
         FileInputStream in = new FileInputStream(System.getProperty("user.dir") +
-                "/properties_native/test.properties");
+                "/properties_native/native_test.properties");
         currentProp.load(in);
         in.close();
         return currentProp;
