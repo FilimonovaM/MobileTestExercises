@@ -1,5 +1,6 @@
 package page_objects.contact_manager;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -16,7 +17,7 @@ public class ContactInfoForm {
     private WebElement contactPhoneTextField;
     private WebElement contactPhoneTitle;
 
-    public void checkContactNameForm(AndroidDriver driver) {
+    public void checkContactNameForm(AppiumDriver driver) {
         contactNameTextField = driver.findElement(By.id(PATH + "contactNameEditText"));
         Assert.assertTrue(contactNameTextField.isDisplayed());
 
@@ -25,7 +26,7 @@ public class ContactInfoForm {
         Assert.assertEquals(contactNameTitle.getText(), CONTACT_NAME.text);
     }
 
-    public void checkContactPhoneForm(AndroidDriver driver) {
+    public void checkContactPhoneForm(AppiumDriver driver) {
         contactPhoneTextField = driver.findElement(By.id(PATH + "contactPhoneEditText"));
         Assert.assertTrue(contactPhoneTextField.isDisplayed());
 
