@@ -6,34 +6,33 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import static enums.ContactManagerEnum.CONTACT_NAME;
+import static enums.ContactManagerEnum.CONTACT_PHONE;
+
 public class ContactInfoForm {
-    final String PATH = "com.example.android.contactmanager:id/";
-
+    private final String PATH = "com.example.android.contactmanager:id/";
+    private final String XPATH = "//android.widget.TextView[@content-desc=";
     private WebElement contactNameTextField;
-
-    @SelendroidFindBy(xpath = "//android.widget.TextView[@content-desc='Contact Name']")
     private WebElement contactNameTitle;
-
     private WebElement contactPhoneTextField;
-
-    @SelendroidFindBy(xpath = "//android.widget.TextView[@content-desc='Contact Number']")
     private WebElement contactPhoneTitle;
 
     public void checkContactNameForm(AndroidDriver driver) {
         contactNameTextField = driver.findElement(By.id(PATH + "contactNameEditText"));
         Assert.assertTrue(contactNameTextField.isDisplayed());
 
-        contactNameTitle = driver.findElement(By.xpath("//android.widget.TextView[@content-desc='Contact Name']"));
+        contactNameTitle = driver.findElement(By.xpath(XPATH + "'Contact Name']"));
         Assert.assertTrue(contactNameTitle.isDisplayed());
-        Assert.assertEquals(contactNameTitle.getText(), "Contact Name");
+        Assert.assertEquals(contactNameTitle.getText(), CONTACT_NAME.text);
     }
 
     public void checkContactPhoneForm(AndroidDriver driver) {
         contactPhoneTextField = driver.findElement(By.id(PATH + "contactPhoneEditText"));
         Assert.assertTrue(contactPhoneTextField.isDisplayed());
 
-        contactPhoneTitle = driver.findElement(By.xpath("//android.widget.TextView[@content-desc='Contact Phone']"));
+        contactPhoneTitle = driver.findElement(By.xpath(XPATH + "'Contact Phone']"));
         Assert.assertTrue(contactPhoneTitle.isDisplayed());
-        Assert.assertEquals(contactPhoneTitle.getText(), "Contact Phone");
+        Assert.assertEquals(contactPhoneTitle.getText(), CONTACT_PHONE.text);
+
     }
 }

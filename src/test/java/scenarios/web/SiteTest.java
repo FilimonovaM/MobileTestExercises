@@ -1,7 +1,6 @@
 package scenarios.web;
 
 import io.appium.java_client.android.AndroidDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -11,14 +10,17 @@ import setup.SetupDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static enums.SitePageEnum.TITLE;
+import static enums.TestsSettingsEnum.APPIUM_LOCALHOST;
+import static enums.TestsSettingsEnum.WEB_PROPERTY;
+
 public class SiteTest extends SetupDriver{
     AndroidDriver driver;
-    final String PROPERTIES = "/properties_web/web_test.properties";
 
     @BeforeClass
     public void setup(){
         try {
-            driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), prepareDriver(PROPERTIES));
+            driver = new AndroidDriver(new URL(APPIUM_LOCALHOST.text), prepareDriver(WEB_PROPERTY.text));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (Exception e) {
@@ -29,7 +31,7 @@ public class SiteTest extends SetupDriver{
     @Test(description = "some description")
     public void checkURL() {
         driver.get(url);
-        Assert.assertEquals(driver.getTitle(), "Internet Assigned Numbers Authority");
+        Assert.assertEquals(driver.getTitle(), TITLE.text);
     }
 
     @AfterClass

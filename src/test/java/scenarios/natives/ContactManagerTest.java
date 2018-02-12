@@ -11,10 +11,12 @@ import setup.SetupDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static enums.TestsSettingsEnum.APPIUM_LOCALHOST;
+import static enums.TestsSettingsEnum.NATIVES_PROPERTY;
+
 public class ContactManagerTest extends SetupDriver {
     ContactAdditionForm contactAdditionForm;
     ContactInfoForm contactInfoForm;
-    final String PROPERTIES = "/properties_native/native_test.properties";
     AndroidDriver driver;
 
     @BeforeClass
@@ -22,7 +24,7 @@ public class ContactManagerTest extends SetupDriver {
         contactAdditionForm = new ContactAdditionForm();
         contactInfoForm = new ContactInfoForm();
         try {
-            driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), prepareDriver(PROPERTIES));
+            driver = new AndroidDriver(new URL(APPIUM_LOCALHOST.text), prepareDriver(NATIVES_PROPERTY.text));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (Exception e) {
