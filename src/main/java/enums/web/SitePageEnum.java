@@ -1,7 +1,5 @@
 package enums.web;
 
-import java.util.List;
-
 public enum SitePageEnum {
 
     HOME("https://www.iana.org/"),
