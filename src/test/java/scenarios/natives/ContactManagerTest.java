@@ -4,14 +4,14 @@ import io.appium.java_client.AppiumDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import page_objects.contact_manager.ContactInfoForm;
 import page_objects.contact_manager.ContactAdditionForm;
+import page_objects.contact_manager.ContactInfoForm;
 import setup.SetupDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static enums.TestsSettingsEnum.APPIUM_LOCALHOST;
+import static enums.CommonInfoEnum.HOST_MASK;
 import static enums.TestsSettingsEnum.NATIVES_PROPERTY;
 
 public class ContactManagerTest extends SetupDriver {
@@ -26,8 +26,10 @@ public class ContactManagerTest extends SetupDriver {
     public void setup() {
         contactAdditionForm = new ContactAdditionForm();
         contactInfoForm = new ContactInfoForm();
+
         try {
-            driver = new AppiumDriver(new URL(APPIUM_LOCALHOST.text), prepareDriverSettings(NATIVES_PROPERTY.text));
+            driver = new AppiumDriver(new URL(properties.getProperty(HOST_MASK.text)),
+                    prepareDriverSettings(NATIVES_PROPERTY.text));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (Exception e) {
