@@ -27,6 +27,9 @@ public class ContactManagerTest {
         }
     }
 
+    /**
+     * uses to close driver
+     */
     @AfterClass
     public void tearDown() {
         DriverSetup.driver.quit();
