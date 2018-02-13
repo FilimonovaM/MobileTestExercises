@@ -1,21 +1,18 @@
 package scenarios.web;
 
-import io.appium.java_client.AppiumDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import setup.DriverSetup;
 import setup.SetupDriver;
 
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.util.concurrent.TimeUnit;
 
 import static enums.SitePageEnum.TITLE;
-import static enums.TestsSettingsEnum.APPIUM_LOCALHOST;
 import static enums.TestsSettingsEnum.WEB_PROPERTY;
 
-public class SiteTest extends SetupDriver{
-    AppiumDriver driver;
+public class SiteTest {
 
     /**
      * uses to prepare AppiumDriver
@@ -23,12 +20,16 @@ public class SiteTest extends SetupDriver{
     @BeforeClass
     public void setup(){
         try {
-            driver = new AppiumDriver(new URL(APPIUM_LOCALHOST.text), prepareDriverSettings(WEB_PROPERTY.text));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+            DriverSetup.prepareDriver(WEB_PROPERTY.text);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        DriverSetup.driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+    }
+
+    @AfterClass
+    public void tearDown(){
+        DriverSetup.driver.quit();
     }
 
     /**
@@ -36,12 +37,7 @@ public class SiteTest extends SetupDriver{
      */
     @Test(description = "testing of web site", groups = "web")
     public void checkURL() {
-        driver.get(url);
-        Assert.assertEquals(driver.getTitle(), TITLE.text);
-    }
-
-    @AfterClass
-    public void tearDown(){
-        driver.quit();
+        DriverSetup.driver.get(DriverSetup.url);
+        Assert.assertEquals(DriverSetup.driver.getTitle(), TITLE.text);
     }
 }

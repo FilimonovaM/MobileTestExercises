@@ -2,7 +2,6 @@ package setup;
 
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utile.ReadProperties;
 
 import java.io.File;
@@ -10,20 +9,32 @@ import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-import static enums.BrowsersEnum.*;
-import static enums.PlatformsEnum.*;
+import static enums.BrowsersEnum.BROWSER_MASK;
+import static enums.BrowsersEnum.CHROME;
+import static enums.BrowsersEnum.SAFARI;
 import static enums.CommonInfoEnum.*;
+import static enums.CommonInfoEnum.HOST_MASK;
+import static enums.PlatformsEnum.*;
 
-public class SetupDriver {
-    private DesiredCapabilities capabilities;
-    private Properties properties;
-    protected AppiumDriver driver;
-    protected String url;
+public class DriverSetup {
+    private static DriverSetup ourInstance = new DriverSetup();
+
+    public static DriverSetup getInstance() {
+        return ourInstance;
+    }
+
+    private DriverSetup() {
+    }
+
+    private static DesiredCapabilities capabilities;
+    private static Properties properties;
+    public static AppiumDriver driver;
+    public static String url;
 
     /**
      * uses to configure & init AppiumDriver
      */
-    protected void prepareDriver(String property) throws Exception {
+    static public void prepareDriver(String property) throws Exception {
         properties = ReadProperties.getCurrentProp(property);
         capabilities = new DesiredCapabilities();
 
@@ -48,6 +59,5 @@ public class SetupDriver {
         }
         driver = new AppiumDriver(new URL(properties.getProperty(HOST_MASK.text)),
                 capabilities);
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
 }
