@@ -37,9 +37,11 @@ public class ContactManagerTest {
      */
     @Test(description = "Native test of some functional of ContactManager", groups = "native")
     public void checkContactManager() {
-        contactAdditionForm.checkTheButton(DriverSetup.driver);
+        contactAdditionForm.checkAdditionalButton();
 
-        contactInfoForm.checkContactNameForm(DriverSetup.driver);
-        contactInfoForm.checkContactPhoneForm(DriverSetup.driver);
+        contactInfoForm.checkNameForm();
+        contactInfoForm.checkPhoneForm();
+        contactInfoForm.checkEmailForm();
+        contactInfoForm.checkSubmitButton();
     }
 }
