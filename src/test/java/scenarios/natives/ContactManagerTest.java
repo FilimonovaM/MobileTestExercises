@@ -35,7 +35,7 @@ public class ContactManagerTest {
     /**
      * uses for checking some functional of ContactManager
      */
-    @Test(description = "Native test of some functional of ContactManager", groups = "native")
+    @Test(description = "Native test of general functional of ContactManager", groups = "native")
     public void checkContactManager() {
         contactAdditionForm.checkAdditionalButton();
 

@@ -12,7 +12,7 @@ import static enums.driverSetup.TestsSettingsEnum.WEB_PROPERTY;
 import static enums.web.SitePageEnum.HOME_PAGE_TITLE;
 
 public class IanaWebPageTest {
-    HomePage ianaPage;
+    HomePage homePage;
 
     /**
      * uses to prepare AppiumDriver
@@ -26,7 +26,7 @@ public class IanaWebPageTest {
         }
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get(url);
-        ianaPage = new HomePage();
+        homePage = new HomePage();
     }
 
     /**
@@ -43,12 +43,12 @@ public class IanaWebPageTest {
     @Test(description = "testing of web site", groups = "web")
     public void checkPageContent() {
         //check title
-        ianaPage.checkUrl(HOME_PAGE_TITLE.text);
+        homePage.checkUrl(HOME_PAGE_TITLE.text);
 
         //check characteristics of the central block title-links
-        ianaPage.checkPageLinks();
+        homePage.checkPageLinks();
 
-        //check texts of central block
-        ianaPage.checkTextsOnCentralBlocks();
+        //check texts on central block
+        homePage.checkTextsOnCentralBlocks();
     }
 }
