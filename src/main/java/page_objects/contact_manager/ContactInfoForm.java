@@ -1,12 +1,11 @@
 package page_objects.contact_manager;
 
-import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import static setup.DriverSetup.*;
-import static enums.ContactManagerEnum.*;
+import static enums.natives.ContactManagerEnum.*;
 
 public class ContactInfoForm {
     private final String PATH = "com.example.android.contactmanager:id/";
@@ -82,7 +81,6 @@ public class ContactInfoForm {
      * -right title
      * -visible
      * -enable
-     * @param driver - used driver
      */
     public void checkEmailForm() {
         //title

@@ -18,7 +18,8 @@ public class ContactAdditionForm {
      * -enable
      */
     public void checkAdditionalButton(){
-        additionContactButton = DriverSetup.driver.findElement(By.xpath("//android.widget.Button[@content-desc='Add Contact']"));
+        additionContactButton = DriverSetup.driver.findElement(By.xpath("//android.widget." +
+                "Button[@content-desc='Add Contact']"));
         assert additionContactButton.isDisplayed() : "Button 'Add Contact' is not Displayed";
         Assert.assertEquals(additionContactButton.getText(), "Add Contact");
         assert additionContactButton.isEnabled() : "Button 'Add Contact' is not Enabled";

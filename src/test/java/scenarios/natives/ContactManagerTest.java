@@ -7,7 +7,7 @@ import page_objects.contact_manager.ContactAdditionForm;
 import page_objects.contact_manager.ContactInfoForm;
 import setup.DriverSetup;
 
-import static enums.TestsSettingsEnum.NATIVES_PROPERTY;
+import static enums.driverSetup.TestsSettingsEnum.NATIVES_PROPERTY;
 
 public class ContactManagerTest {
     ContactAdditionForm contactAdditionForm;

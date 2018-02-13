@@ -1,4 +1,4 @@
-package enums;
+package enums.driverSetup;
 
 public enum PlatformsEnum {
     PLATFORM_MASK("platformName"),

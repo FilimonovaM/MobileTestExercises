@@ -1,4 +1,4 @@
-package enums;
+package enums.driverSetup;
 
 public enum CommonInfoEnum {
     URL_MASK("sut"),

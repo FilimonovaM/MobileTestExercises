@@ -1,4 +1,4 @@
-package enums;
+package enums.driverSetup;
 
 public enum BrowsersEnum {
     BROWSER_MASK("browserName"),

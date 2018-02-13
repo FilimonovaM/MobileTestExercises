@@ -1,4 +1,4 @@
-package enums;
+package enums.driverSetup;
 
 public enum TestsSettingsEnum {
     NATIVES_PROPERTY("/properties_native/native_test.properties"),

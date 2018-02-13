@@ -1,4 +1,4 @@
-package enums;
+package enums.natives;
 
 public enum ContactManagerEnum {
     CONTACT_NAME("Contact Name", "Nick"),
