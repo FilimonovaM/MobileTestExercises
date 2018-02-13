@@ -24,7 +24,6 @@ public class IanaWebPageTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get(url);
         homePage = new HomePage();
     }
