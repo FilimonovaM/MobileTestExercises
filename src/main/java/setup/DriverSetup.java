@@ -6,6 +6,7 @@ import utile.ReadProperties;
 
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Path;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -40,7 +41,7 @@ public class DriverSetup {
 
         if (properties != null) {
             if (properties.containsKey(URL_MASK.text)) {
-                url = URL_PREFIX + properties.getProperty(URL_MASK.text);
+                url = URL_PREFIX.text + properties.getProperty(URL_MASK.text);
                 if (properties.getProperty(PLATFORM_MASK.text).equalsIgnoreCase(ANDROID.text)) {
                     properties.setProperty(BROWSER_MASK.text, CHROME.text);
                 } else if (properties.getProperty(PLATFORM_MASK.text).equalsIgnoreCase(IOS.text)) {

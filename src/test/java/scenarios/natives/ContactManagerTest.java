@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import page_objects.contact_manager.ContactAdditionForm;
 import page_objects.contact_manager.ContactInfoForm;
 import setup.DriverSetup;
-import setup.SetupDriver;
 
 import static enums.TestsSettingsEnum.NATIVES_PROPERTY;
 
