@@ -32,7 +32,7 @@ public class ContactManagerTest {
      */
     @AfterClass
     public void tearDown() {
-        DriverSetup.driver.quit();
+        DriverSetup.getDriver().quit();
     }
 
     /**

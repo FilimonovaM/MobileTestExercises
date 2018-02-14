@@ -24,7 +24,7 @@ public class IanaWebPageTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        driver.get(url);
+        getDriver().get(getUrl());
         homePage = new HomePage();
     }
 
@@ -33,7 +33,7 @@ public class IanaWebPageTest {
      */
     @AfterClass
     public void tearDown() {
-        driver.quit();
+        getDriver().quit();
     }
 
     /**

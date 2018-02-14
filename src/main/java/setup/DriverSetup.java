@@ -20,9 +20,22 @@ public class DriverSetup {
     private static DriverSetup ourInstance = new DriverSetup();
     private static DesiredCapabilities capabilities;
     private static Properties properties;
-    public static AppiumDriver driver;
-    public static WebDriverWait webDriverWait;
-    public static String url;
+
+    public static AppiumDriver getDriver() {
+        return driver;
+    }
+
+    public static WebDriverWait getWebDriverWait() {
+        return webDriverWait;
+    }
+
+    public static String getUrl() {
+        return url;
+    }
+
+    private static AppiumDriver driver;
+    private static WebDriverWait webDriverWait;
+    private static String url;
 
     public static DriverSetup getInstance() {
         return ourInstance;

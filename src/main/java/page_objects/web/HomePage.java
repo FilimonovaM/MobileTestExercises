@@ -23,7 +23,7 @@ public class HomePage extends WebPage {
      */
     @Override
     public void checkUrl(String url) {
-        Assert.assertEquals(driver.getTitle(), url);
+        Assert.assertEquals(getDriver().getTitle(), url);
     }
 
     /**
@@ -33,9 +33,9 @@ public class HomePage extends WebPage {
      * uses dynamic search - or selenium throw StaleElementReferenceException
      */
     public void checkPageLinks() {
-        domainNamesLink = driver.findElementByCssSelector("#home-panel-domains a");
-        numberResourcesLink = driver.findElementByCssSelector("#home-panel-numbers a");
-        protocolAssignmentsLink = driver.findElementByCssSelector("#home-panel-protocols a");
+        domainNamesLink = getDriver().findElementByCssSelector("#home-panel-domains a");
+        numberResourcesLink = getDriver().findElementByCssSelector("#home-panel-numbers a");
+        protocolAssignmentsLink = getDriver().findElementByCssSelector("#home-panel-protocols a");
 
         //check titles of blocks
         Assert.assertEquals(domainNamesLink.getText(), DOMAIN_TITLE.text);
@@ -43,14 +43,14 @@ public class HomePage extends WebPage {
         Assert.assertEquals(protocolAssignmentsLink.getText(), PROTOCOL_ASSIGNMENTS_TITLE.text);
 
         //DOMAIN block
-        checkLinkActivityOnClick(driver.findElementByCssSelector("#home-panel-domains a"), new DomainPage(),
+        checkLinkActivityOnClick(getDriver().findElementByCssSelector("#home-panel-domains a"), new DomainPage(),
                 DOMAIN.text);
         //NUMBER_RESOURCES block
-        checkLinkActivityOnClick(driver.findElementByCssSelector("#home-panel-numbers a"),
+        checkLinkActivityOnClick(getDriver().findElementByCssSelector("#home-panel-numbers a"),
                 new NumberResourcesPage(), NUMBER_RESOURCES.text);
         //PROTOCOL block
-        checkLinkActivityOnClick(driver.findElementByCssSelector("#home-panel-protocols a"), new ProtocolPage(),
-                PROTOCOL.text);
+        checkLinkActivityOnClick(getDriver().findElementByCssSelector("#home-panel-protocols a"),
+                new ProtocolPage(), PROTOCOL.text);
     }
 
     /**
@@ -72,8 +72,8 @@ public class HomePage extends WebPage {
         assert element.isEnabled() : element.getText() + " - isn`t enabled!!!";
         element.click();
         page.checkUrl(url);
-        //wait the page-loading for the currect work with next elements
-        webDriverWait.until(ExpectedConditions.urlToBe(HOME.text));
+        //wait the page-loading for the correct work with next elements
+        getWebDriverWait().until(ExpectedConditions.urlToBe(HOME.text));
     }
 
     /**
@@ -83,9 +83,9 @@ public class HomePage extends WebPage {
      * -visible
      */
     public void checkTextsOnCentralBlocks() {
-        domainNamesTextField = driver.findElementByCssSelector("#home-panel-domains");
-        numberResourcesTextField = driver.findElementByCssSelector("#home-panel-numbers");
-        protocolAssignmentsTextField = driver.findElementByCssSelector("#home-panel-protocols");
+        domainNamesTextField = getDriver().findElementByCssSelector("#home-panel-domains");
+        numberResourcesTextField = getDriver().findElementByCssSelector("#home-panel-numbers");
+        protocolAssignmentsTextField = getDriver().findElementByCssSelector("#home-panel-protocols");
 
         assert domainNamesTextField.isDisplayed() : "'Domain' Text Field - invisible!!!";
         Assert.assertEquals(domainNamesTextField.getText(), DOMAIN_BLOCK_TEXT.text);
