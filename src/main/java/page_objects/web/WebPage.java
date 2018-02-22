@@ -2,6 +2,7 @@ package page_objects.web;
 
 import org.testng.Assert;
 
+import static enums.web.SitePageEnum.HOME;
 import static setup.DriverSetup.getDriver;
 
 public class WebPage {
@@ -12,6 +13,6 @@ public class WebPage {
      */
     public void checkUrl(String url) {
         Assert.assertEquals(url, getDriver().getCurrentUrl());
-        getDriver().navigate().back();
+        getDriver().get(HOME.text);
     }
 }

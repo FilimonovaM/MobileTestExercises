@@ -3,13 +3,11 @@ package scenarios.web;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import page_objects.web.*;
-import static setup.DriverSetup.*;
+import page_objects.web.HomePage;
 
-import java.util.concurrent.TimeUnit;
-
-import static enums.driverSetup.TestsSettingsEnum.WEB_PROPERTY;
+import static enums.driverSetup.TestsSettingsEnum.WEB_PROPERTY_ON_FARM_IOS;
 import static enums.web.SitePageEnum.HOME_PAGE_TITLE;
+import static setup.DriverSetup.*;
 
 public class IanaWebPageTest {
     HomePage homePage;
@@ -17,10 +15,11 @@ public class IanaWebPageTest {
     /**
      * uses to prepare AppiumDriver
      */
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setup() {
         try {
-            prepareDriver(WEB_PROPERTY.text);
+//            prepareDriver(WEB_PROPERTY_ON_FARM_ANDROID.text);
+            prepareDriver(WEB_PROPERTY_ON_FARM_IOS.text);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -31,9 +30,9 @@ public class IanaWebPageTest {
     /**
      * uses to close resources
      */
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
-        getDriver().quit();
+        getDriver().closeApp();
     }
 
     /**

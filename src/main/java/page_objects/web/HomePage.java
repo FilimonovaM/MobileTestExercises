@@ -5,7 +5,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import static enums.web.SitePageEnum.*;
-import static setup.DriverSetup.*;
+import static setup.DriverSetup.getDriver;
+import static setup.DriverSetup.getWebDriverWait;
 
 public class HomePage extends WebPage {
     private WebElement domainNamesLink;
@@ -19,11 +20,11 @@ public class HomePage extends WebPage {
     /**
      * uses to check the url after driver navigation.
      *
-     * @param url - expected  new url
+     * @param urlTitle - expected  new url
      */
     @Override
-    public void checkUrl(String url) {
-        Assert.assertEquals(getDriver().getTitle(), url);
+    public void checkUrl(String urlTitle) {
+        Assert.assertEquals(getDriver().getTitle(), urlTitle);
     }
 
     /**
@@ -48,9 +49,6 @@ public class HomePage extends WebPage {
         //NUMBER_RESOURCES block
         checkLinkActivityOnClick(getDriver().findElementByCssSelector("#home-panel-numbers a"),
                 new NumberResourcesPage(), NUMBER_RESOURCES.text);
-        //PROTOCOL block
-        checkLinkActivityOnClick(getDriver().findElementByCssSelector("#home-panel-protocols a"),
-                new ProtocolPage(), PROTOCOL.text);
     }
 
     /**

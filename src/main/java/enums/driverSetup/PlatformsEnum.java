@@ -3,7 +3,7 @@ package enums.driverSetup;
 public enum PlatformsEnum {
     PLATFORM_MASK("platformName"),
     ANDROID("Android"),
-    IOS("Safari"),
+    IOS("iOS"),
     UNKNOWN_PLATFORM("Unknown platform");
 
    public final String text;

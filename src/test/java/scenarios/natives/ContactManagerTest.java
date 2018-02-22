@@ -5,9 +5,10 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import page_objects.contact_manager.ContactAdditionForm;
 import page_objects.contact_manager.ContactInfoForm;
-import setup.DriverSetup;
 
-import static enums.driverSetup.TestsSettingsEnum.NATIVES_PROPERTY;
+import static enums.driverSetup.TestsSettingsEnum.NATIVES_PROPERTY_ON_FARM;
+import static setup.DriverSetup.getDriver;
+import static setup.DriverSetup.prepareDriver;
 
 public class ContactManagerTest {
     ContactAdditionForm contactAdditionForm;
@@ -16,12 +17,12 @@ public class ContactManagerTest {
     /**
      * uses to prepare AppiumDriver
      */
-    @BeforeClass
+    @BeforeClass(alwaysRun = true)
     public void setup() {
         contactAdditionForm = new ContactAdditionForm();
         contactInfoForm = new ContactInfoForm();
         try {
-            DriverSetup.prepareDriver(NATIVES_PROPERTY.text);
+            prepareDriver(NATIVES_PROPERTY_ON_FARM.text);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -30,9 +31,10 @@ public class ContactManagerTest {
     /**
      * uses to close driver
      */
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
-        DriverSetup.getDriver().quit();
+        getDriver().closeApp();
+        System.out.println("Driver closes application");
     }
 
     /**
